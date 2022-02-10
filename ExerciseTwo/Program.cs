@@ -89,7 +89,7 @@ namespace exTwoMac
 
         public override string ToString()
         {
-            string overrideString = "";
+            string overrideString = string.Format("{0} {1} ({2}), Exam 1: {3:F2}, Exam 2: {4:F2}, Exam 3: {5:F2}, Average Grade: {6:F2}, LetterGrade: {7}", FirstName,LastName,SID,Exam1Grade,Exam2Grade,Exam3Grade,AvgGrade,LetterGrade);
 
             return overrideString;
             //return base.ToString();
@@ -110,12 +110,11 @@ namespace exTwoMac
             // collections of students ~ list because we dont have a defined amount of students
             List<Student> listOfStudents = new List<Student>();
 
-
+            // ask user for an input to begin program or not
             Console.WriteLine("Do you want to enter a student? Yes or No");
-
             string userResponce = Console.ReadLine().Trim().ToLower();
 
-            // ask user for student data
+            // ask user for student data:
             //names of the students, the student id’s, and the grades of three exams.
             while (userResponce == "yes")
             {
@@ -138,16 +137,21 @@ namespace exTwoMac
                 Console.WriteLine("What is your third grade");
                 double gradeThree = Convert.ToDouble(Console.ReadLine());
 
+                // create student object
                 Student newStudent = new Student(firstName, lastName, studentID, gradeOne, gradeTwo, gradeThree);
 
+                // add the new student to a collection
+                listOfStudents.Add(newStudent);
             }
 
             // Print out all the students’ information, including the names, the student id’s, the grades of three exams, and the average grade of three exams.
-
-
-
-
-
+            foreach (Student x in listOfStudents)
+            {
+                // calls ToString(); Override method
+                Console.WriteLine(x.ToString());
+            }
+            
+            // keep console open
             Console.ReadKey();
         }
     }
