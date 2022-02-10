@@ -101,8 +101,6 @@ namespace exTwoMac
     {
         static void Main(string[] args)
         {
-
-
             // collections of students ~ list because we dont have a defined amount of students
             List<Student> listOfStudents = new List<Student>();
 
