@@ -22,25 +22,24 @@ namespace exTwoMac
 
     class Student
     {
+        // public student attributes
+        public string FirstName;
+        public string LastName;
+        public string SID;
 
+        public double Exam1Grade;
+        public double Exam2Grade;
+        public double Exam3Grade;
 
-
-        string FirstName;
-        string LastName;
-        string SID;
-
-        double Exam1Grade;
-        double Exam2Grade;
-        double Exam3Grade;
-
-        double AvgGrade;
-        char LetterGrade;
+        public double AvgGrade;
+        public char LetterGrade;
 
 
         public Student()
         {
         }
 
+        // create a student object
         public Student(string fn, string ln, string id, double exam1, double exam2, double exam3)
         {
             FirstName = fn;
@@ -52,6 +51,7 @@ namespace exTwoMac
 
         }
 
+        // calculate the avg grades with the given exam 1 - exam 3 grades and return avg number
         public double CalculateAverage()
         {
             double AvgGrade = (Exam1Grade + Exam2Grade + Exam3Grade) / 3;
@@ -60,6 +60,7 @@ namespace exTwoMac
 
         }
 
+        // calculate the letter grade given the average grade
         public char CalculateLetterGrade()
         {
             if (AvgGrade > 90)
@@ -89,17 +90,12 @@ namespace exTwoMac
 
         public override string ToString()
         {
-            string overrideString = string.Format("{0} {1} ({2}), Exam 1: {3:F2}, Exam 2: {4:F2}, Exam 3: {5:F2}, Average Grade: {6:F2}, LetterGrade: {7}", FirstName,LastName,SID,Exam1Grade,Exam2Grade,Exam3Grade,AvgGrade,LetterGrade);
+            string overrideString = string.Format("{0} {1} ({2}), Exam 1: {3:F2}, Exam 2: {4:F2}, Exam 3: {5:F2}, Average Grade: {6:F2}, LetterGrade: {7}", FirstName,LastName,SID,Exam1Grade,Exam2Grade,Exam3Grade, CalculateAverage(), CalculateLetterGrade());
 
             return overrideString;
             //return base.ToString();
         }
-
-
-
     }
-
-
 
     class Program
     {
@@ -113,6 +109,7 @@ namespace exTwoMac
             // ask user for an input to begin program or not
             Console.WriteLine("Do you want to enter a student? Yes or No");
             string userResponce = Console.ReadLine().Trim().ToLower();
+            ;
 
             // ask user for student data:
             //names of the students, the student id’s, and the grades of three exams.
@@ -142,6 +139,10 @@ namespace exTwoMac
 
                 // add the new student to a collection
                 listOfStudents.Add(newStudent);
+
+                // ask user for an input to begin program or not
+                Console.WriteLine("Do you want to enter a student? Yes or No");
+                userResponce = Console.ReadLine().Trim().ToLower();
             }
 
             // Print out all the students’ information, including the names, the student id’s, the grades of three exams, and the average grade of three exams.
